@@ -14,6 +14,8 @@
 #include <Arduino.h>
 #endif
 
+namespace YourLibrary {
+
 class DebouncedButton {
 public:
     using Clock = uint32_t (*)();
@@ -65,3 +67,5 @@ private:
     bool     _press_event      = false;
     bool     _release_event    = false;
 };
+
+}  // namespace YourLibrary

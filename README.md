@@ -26,6 +26,11 @@ laptop without flashing hardware.
   - `YourLibrary.h` - main include.
   - `DebouncedButton.{h,cpp}` - example class with injected dependencies.
   - `RingBuffer.h` - header-only template.
+
+  All public types live inside `namespace YourLibrary` so they don't collide
+  with Arduino core or third-party libraries (the SAMD core ships its own
+  `RingBuffer`, for example). In sketches, write `using namespace YourLibrary;`
+  or fully qualify as `YourLibrary::DebouncedButton`.
 - `examples/Basic/Basic.ino` - real Arduino sketch.
 - `examples/Advanced/Advanced.ino` - ISR + ring buffer pattern.
 - `test/host/` - host-side tests; runs with `make`.

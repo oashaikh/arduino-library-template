@@ -3,6 +3,13 @@
  */
 #include <YourLibrary.h>
 
+using namespace YourLibrary;
+
+// Some boards (notably bare ESP32 dev boards) don't define LED_BUILTIN.
+#ifndef LED_BUILTIN
+#define LED_BUILTIN 2
+#endif
+
 constexpr uint8_t LED_PIN    = LED_BUILTIN;
 constexpr uint8_t BUTTON_PIN = 2;
 

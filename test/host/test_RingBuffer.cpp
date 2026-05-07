@@ -1,6 +1,8 @@
 #include "test_runner.h"
 #include "RingBuffer.h"
 
+using YourLibrary::RingBuffer;
+
 TEST(ring_buffer_starts_empty) {
     RingBuffer<int, 8> rb;
     ASSERT_TRUE(rb.isEmpty());

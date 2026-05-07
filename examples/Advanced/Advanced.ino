@@ -3,13 +3,11 @@
  */
 #include <YourLibrary.h>
 
+using namespace YourLibrary;
+
 constexpr uint8_t INT_PIN = 2;
 
 RingBuffer<uint32_t, 32> events;
-
-void IRAM_ATTR_OR_NOTHING() {
-    // (Define IRAM_ATTR_OR_NOTHING per platform if needed.)
-}
 
 void onEdge() {
     events.push(micros());

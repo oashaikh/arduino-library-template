@@ -1,5 +1,7 @@
 #include "DebouncedButton.h"
 
+namespace YourLibrary {
+
 #ifdef ARDUINO
 static uint32_t arduino_millis() { return ::millis(); }
 static bool     arduino_read(uint8_t pin) { return ::digitalRead(pin) == HIGH; }
@@ -41,3 +43,5 @@ void DebouncedButton::update()
         else             _release_event = true;
     }
 }
+
+}  // namespace YourLibrary

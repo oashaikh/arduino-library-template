@@ -1,6 +1,8 @@
 #include "test_runner.h"
 #include "DebouncedButton.h"
 
+using YourLibrary::DebouncedButton;
+
 namespace {
 
 uint32_t g_now = 0;

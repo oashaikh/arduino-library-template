@@ -3,11 +3,16 @@
  *
  * Header-only fixed-capacity SPSC ring buffer. Safe for one-producer-one-consumer
  * use across an ISR/loop boundary on AVR/SAMD/ESP32 (uses volatile indices).
+ *
+ * Wrapped in `namespace YourLibrary` so it doesn't collide with Arduino core
+ * types of the same name (Arduino's SAMD core ships its own RingBuffer).
  */
 #pragma once
 
 #include <stdint.h>
 #include <stddef.h>
+
+namespace YourLibrary {
 
 template <typename T, size_t Capacity>
 class RingBuffer {
@@ -42,3 +47,5 @@ private:
     volatile size_t _head = 0;
     volatile size_t _tail = 0;
 };
+
+}  // namespace YourLibrary
