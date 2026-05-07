@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
 
 jobs:
   host-tests:
@@ -18,8 +19,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: arduino/arduino-lint-action@v2
         with:
-          library-manager: update
-          compliance: strict
+          # 'specification' lets a not-yet-published template pass; switch to
+          # 'strict' once you've renamed the library and submitted it to the
+          # Library Manager registry.
+          compliance: specification
+          library-manager: false
 
   compile-examples:
     runs-on: ubuntu-latest
@@ -33,6 +37,10 @@ jobs:
           - esp32:esp32:esp32
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Need full history for compile-sketches to optionally compute size
+          # deltas against the parent commit. Set to 1 if you don't care.
+          fetch-depth: 0
       - uses: arduino/compile-sketches@v1
         with:
           fqbn: ${{ matrix.fqbn }}
@@ -41,7 +49,9 @@ jobs:
           sketch-paths: |
             - examples/Basic
             - examples/Advanced
-          enable-deltas-report: true
+          # Disabled: relies on a parent commit which doesn't exist on the
+          # initial commit. Re-enable on PRs only if you want size deltas.
+          enable-deltas-report: false
           platforms: |
             - name: arduino:avr
             - name: arduino:samd
