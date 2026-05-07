@@ -1,0 +1,30 @@
+#######################################
+# Syntax Coloring Map for YourLibrary
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+YourLibrary	KEYWORD1
+DebouncedButton	KEYWORD1
+RingBuffer	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+begin	KEYWORD2
+update	KEYWORD2
+read	KEYWORD2
+write	KEYWORD2
+isPressed	KEYWORD2
+wasPressed	KEYWORD2
+push	KEYWORD2
+pop	KEYWORD2
+size	KEYWORD2
+capacity	KEYWORD2
+isEmpty	KEYWORD2
+isFull	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################

@@ -1,0 +1,16 @@
+build/
+*.o
+*.elf
+*.hex
+*.bin
+
+# Arduino IDE temp
+*.swp
+
+# Test runners
+test/.bin/
+test/build/
+
+.DS_Store
+.vscode/
+.idea/
