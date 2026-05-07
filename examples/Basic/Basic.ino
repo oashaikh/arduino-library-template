@@ -1,9 +1,12 @@
 /*
  * Basic example: blink LED while debouncing a button on D2.
+ *
+ * Types are fully qualified as YourLibrary::* so they don't collide with
+ * Arduino-core types of the same name (e.g. SAMD core ships its own
+ * RingBuffer in the global namespace, and `using namespace YourLibrary`
+ * would still leave the name ambiguous).
  */
 #include <YourLibrary.h>
-
-using namespace YourLibrary;
 
 // Some boards (notably bare ESP32 dev boards) don't define LED_BUILTIN.
 #ifndef LED_BUILTIN
@@ -13,8 +16,8 @@ using namespace YourLibrary;
 constexpr uint8_t LED_PIN    = LED_BUILTIN;
 constexpr uint8_t BUTTON_PIN = 2;
 
-DebouncedButton button(BUTTON_PIN, /*activeLow=*/true, /*debounce_ms=*/30);
-RingBuffer<uint32_t, 16> events;
+YourLibrary::DebouncedButton button(BUTTON_PIN, /*activeLow=*/true, /*debounce_ms=*/30);
+YourLibrary::RingBuffer<uint32_t, 16> events;
 
 void setup() {
     pinMode(BUTTON_PIN, INPUT_PULLUP);

@@ -29,8 +29,10 @@ laptop without flashing hardware.
 
   All public types live inside `namespace YourLibrary` so they don't collide
   with Arduino core or third-party libraries (the SAMD core ships its own
-  `RingBuffer`, for example). In sketches, write `using namespace YourLibrary;`
-  or fully qualify as `YourLibrary::DebouncedButton`.
+  `RingBuffer`, for example). Sketches **fully qualify** the types as
+  `YourLibrary::DebouncedButton` etc — `using namespace YourLibrary` would
+  still leave both `::RingBuffer` and `YourLibrary::RingBuffer` visible
+  on SAMD, so the name stays ambiguous.
 - `examples/Basic/Basic.ino` - real Arduino sketch.
 - `examples/Advanced/Advanced.ino` - ISR + ring buffer pattern.
 - `test/host/` - host-side tests; runs with `make`.

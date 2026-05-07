@@ -3,11 +3,9 @@
  */
 #include <YourLibrary.h>
 
-using namespace YourLibrary;
-
 constexpr uint8_t INT_PIN = 2;
 
-RingBuffer<uint32_t, 32> events;
+YourLibrary::RingBuffer<uint32_t, 32> events;
 
 void onEdge() {
     events.push(micros());
